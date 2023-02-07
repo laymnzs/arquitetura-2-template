@@ -1,4 +1,5 @@
 import { UserDatabase } from "../database/UserDatabase"
+import { BadRequesteError } from "../erros/BadRequestError"
 import { User } from "../models/User"
 import { UserDB } from "../types"
 
@@ -22,7 +23,7 @@ export class UserBusiness {
         const { id, name, email, password } = input
 
         if (typeof id !== "string") {
-            throw new Error("'id' deve ser string")
+            throw new BadRequesteError()
         }
 
         if (typeof name !== "string") {
